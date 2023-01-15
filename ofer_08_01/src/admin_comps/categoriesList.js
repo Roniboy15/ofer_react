@@ -28,8 +28,8 @@ export default function CategoriesList() {
     }
     catch (err) {
       console.log(err)
-      alert("There problem , come back late")
-    }
+      alert("There problem, come back later")
+    
 
   }
 

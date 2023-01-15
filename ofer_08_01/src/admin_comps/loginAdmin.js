@@ -24,10 +24,11 @@ export default function LoginAdmin() {
       localStorage.setItem(TOKEN_KEY, data.token);
       // navigate to categoriesList.js
       nav("/admin/categories")
-    }
+    } 
     catch(err){
       console.log(err);
-      alert("Email or passwrod worng!");
+      //alert("Email or passwrod wrong!");
+      throw err
     }
     
   }

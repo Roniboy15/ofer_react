@@ -5,6 +5,7 @@ import CategoriesList from './admin_comps/categories';
 import AddCategory from './admin_comps/addCat';
 import EditCategory from './admin_comps/editCat';
 import AdminHeader from './admin_comps/adminHeader';
+import AppListAdmin from './admin_comps/appListAdmin';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path='/admin/categories/new' element={<AddCategory/>}/>
 
         <Route path='/admin/categories/edit/:id' element={<EditCategory/>}/>
+
+        <Route path='/admin/games' element={<AppListAdmin/>}/>
 
       </Routes>
 
