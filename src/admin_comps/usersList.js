@@ -63,7 +63,8 @@ export default function UsersList() {
                 <td>{i+1}</td>
                 <td>{item.name}</td>
                 <td>{item.email}</td>
-                <td><button onClick={() => {onChangeRole(item._id,item.role)}}>{item.role}</button></td>
+                {/* דואג שאדמינים יהיו עם רקע צהוב בכפתורים */}
+                <td><button className={item.role == "admin" ? "bg-warning" : ""} onClick={() => {onChangeRole(item._id,item.role)}}>{item.role}</button></td>
                 <td>{myDate}</td>
               
               </tr>
@@ -71,10 +72,7 @@ export default function UsersList() {
           })}
         </tbody>
       </table>
-      <select className='ofer'>
-        <option value="a">A</option>
-        <option value="b">B</option>
-      </select>
+      
     </div>
   )
 }

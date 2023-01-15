@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useForm} from "react-hook-form";
 import {useNavigate, useParams} from "react-router-dom";
+import {toast} from "react-toastify";
 
 import { API_URL,doApiGet,doApiMethod, TOKEN_KEY } from '../services/apiService';
 import AuthAdmin from './authAdmin';
@@ -42,12 +43,14 @@ export default function EditCategory() {
       let data = await doApiMethod(url,"PUT",bodyData);
       console.log(data)
       if(data.modifiedCount == 1){
-        alert("category updated")
+        // alert("category updated");
+        toast.info("Category updated")
         // כמו ללחוץ בק/אחורה בדפדפן עצמו
         nav(-1);
       }
       else{
-        alert("You not change nothing from the last update")
+        toast.error("You didn't change nothing from the last update")
+       // alert("You not change nothing from the last update")
       }
       
     
@@ -82,6 +85,7 @@ export default function EditCategory() {
           </div>}
         <label>img_url</label>
         <input defaultValue={info.img_url} {...register("img_url", {minLength:2,required:false})}  className="form-control" type="text" />
+        {info.img_url.length > 1 && <img src={info.img_url} alt="img" className='w-25 d-block'/>}
         {errors.img_url && <div className='text-danger'>
           * Enter valid img_url (min 2 chars)
           </div>}
