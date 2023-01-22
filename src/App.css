@@ -1,0 +1,30 @@
+/* global css */
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+header ul{
+  display: flex;
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+
+header ul a{
+  color:black;
+  padding:0 12px;
+  text-decoration: none;
+}
+
+.bg-item-app{
+  background-position: center;
+  background-size: cover;
+  min-height: 130px;
+  background: black;
+}
+
