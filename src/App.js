@@ -1,4 +1,4 @@
-import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ToastContainer } from "react-toastify";
 
 import AddCategory from "./admin_comps/addCategory";
@@ -15,37 +15,41 @@ import GameInfo from "./client_comps/gameInfo/gameInfo";
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-import Login from "./client_comps/userPages/login";
-import Signup from "./client_comps/userPages/signup";
+import { adminRoutes, clientRoutes } from "./routesPath/routesPath";
+import CheckIp from "./comps_general/checkIp";
+import { AppContext } from "./context/context";
+import { useContext, useState } from "react";
+import FetchLocation from "./comps_general/checkIp";
 
 function App() {
+  const [flag, setFlag] = useState()
   return (
-    <BrowserRouter>
-    {/* Routes of header what to show client or admin header... */}
-      <Routes>
-        <Route path="/admin/*" element={<AdminHeader />}/>
-        <Route path="/*" element={<HeaderClient />} />
-      </Routes>
-      <Routes>  
-        {/* client */}
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:catName" element={<PageGamesList />} />
-        <Route path="/info/:id" element={<GameInfo />} />
-        
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+    <div>
+      <FetchLocation setFlag={flag}/>
+      {console.log("app flag: "+flag)}
+      {!flag ?
+        <BrowserRouter>
+          {/* Routes of header what to show client or admin header... */}
+          <Routes>
 
-        {/* admin */}
-        <Route path="/admin" element={<LoginAdmin />} />
-        <Route path="/admin/categories" element={<CategoriesList />} />
-        <Route path="/admin/categories/new" element={<AddCategory />} />
-        <Route path="/admin/categories/edit/:id" element={<EditCategory />} />
-        <Route path="/admin/apps" element={<AppListAdmin />} />
-        <Route path="/admin/users" element={<UsersList />} />
-      </Routes>
-      {/* The toast messages added here */}
-      <ToastContainer position="top-left" theme="colored" />
-    </BrowserRouter>
+            <Route path="/admin/*" element={<AdminHeader />} />
+            <Route path="/*" element={<HeaderClient />} />
+          </Routes>
+          <Routes>
+            {/* client */}
+            {/* לא יכלנו לזמן כקומפנינטה מכיוון שראוטס
+        מצפה שבתוכו יגיע ישירות ריאקט פרגמט או ראוט
+        אבל כן אפשר לעשות פונקציה שמחזיר קומפנינטות */}
+            {clientRoutes()}
+            {adminRoutes()}
+
+          </Routes>
+          {/* The toast messages added here */}
+          <ToastContainer position="top-left" theme="colored" />
+        </BrowserRouter>
+        : <div>Not allowed in this country</div>}
+        
+    </div>
   );
 }
 

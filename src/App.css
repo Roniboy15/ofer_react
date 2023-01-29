@@ -22,9 +22,8 @@ header ul a{
 }
 
 .bg-item-app{
-  background-position: center;
   background-size: cover;
+  background-position: center;
   min-height: 130px;
-  background: black;
+  background-color: black;
 }
-

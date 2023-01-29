@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { API_URL, doApiGet } from '../../services/apiService';
 
 export default function CategoriesClientList() {
   const [ar, setAr] = useState([]);
+  const nav = useNavigate();
 
   useEffect(() => {
     doApi();
@@ -21,7 +22,9 @@ export default function CategoriesClientList() {
     <div className='row g-4 py-5'>
       {ar.map((item, i) => {
         return (
-          <article key={item._id} className='col-md-4 '>
+          <article onClick={ () => {
+            nav("/category/"+item.url_code);
+          }} key={item._id} className='col-md-4 '>
             <div className='bg-category shadow center' style={{ backgroundImage: `url(${item.img_url})` }}>
               <h3>
                 <Link to={"/category/"+item.url_code}>{item.name}</Link>
