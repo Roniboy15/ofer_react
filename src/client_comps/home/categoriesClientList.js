@@ -24,7 +24,7 @@ export default function CategoriesClientList() {
           <article key={item._id} className='col-md-4 '>
             <div className='bg-category shadow center' style={{ backgroundImage: `url(${item.img_url})` }}>
               <h3>
-                <Link to={'category/' + item.url_code}>{item.name}</Link>
+                <Link to={"/category/"+item.url_code}>{item.name}</Link>
               </h3>
             </div>
 

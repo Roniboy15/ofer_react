@@ -7,7 +7,7 @@ import { API_URL, doApiGet, doApiMethod } from '../services/apiService';
 import AuthAdmin from './authAdmin'
 
 export default function AppListAdmin() {
-  // בשביל לאסוף קווארי סטרינג
+  // בשביל לאסוף קווארי סטרינג ?page=
   const [getQuery] = useSearchParams();
   const [ar, setAr] = useState([]);
   const [loading,setLoading] = useState(false);
@@ -59,6 +59,7 @@ export default function AppListAdmin() {
     <div className='container'>
       <AuthAdmin />
       <h1>List of apps/games in the system</h1>
+      {/* apiPages-> בקשה כדי שיחזיר כמות ומספר עמודים */}
       <PagesComp apiPages={API_URL+"/gamesApps/count?perPage=5"} linkTo={"/admin/apps?page="} linkCss={"btn btn-warning me-2"} />
       {loading && <Loading />}
       <table className='table table-striped table-hover'>

@@ -2,6 +2,7 @@ import React from 'react'
 import {useForm} from "react-hook-form"
 import { API_URL,doApiMethod, TOKEN_KEY } from '../../services/apiService';
 import {useNavigate} from "react-router-dom";
+import { toast } from 'react-toastify';
 
 export default function Login() {
 
@@ -23,11 +24,12 @@ export default function Login() {
       // save local of token
       localStorage.setItem(TOKEN_KEY, data.token);
       // navigate to categoriesList.js
-      nav("/")
+      nav("/");
+      toast.info("You logged in");
     }
     catch(err){
       console.log(err);
-      alert("Email or password wrong!");
+      toast.error("Email or password wrong!");
     }
     
   }

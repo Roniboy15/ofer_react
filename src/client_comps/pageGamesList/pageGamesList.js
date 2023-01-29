@@ -4,13 +4,13 @@ import Loading from '../../comps_general/loading';
 import { API_URL, doApiGet } from '../../services/apiService';
 import GameAppItem from '../misc/gameAppItem';
 
-export default function PagesGamesList() {
+export default function PageGamesList() {
   // יכיל את הרשימה של האפליקציות/משחקים של אותה קטגוריה
   const [ar, setAr] = useState([]);
-  const [loading, setLoading] = useState(false);
   // יכיל את המידע על הקטגוריה
   const [catInfo, setCatInfo] = useState({});
   const params = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // console.log(params["catName"]);

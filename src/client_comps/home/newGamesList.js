@@ -21,7 +21,7 @@ export default function NewGamesList() {
     <div>
       <hr className='shadow'/>
       <h2>New games/apps in the site:</h2>
-      <div className="row">
+      <div className="row pb-5">
         {ar.map(item => {
           return(
             <GameAppItem key={item._id} item={item}/>
