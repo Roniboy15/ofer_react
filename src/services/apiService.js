@@ -5,6 +5,8 @@ export const API_URL = "http://localhost:3002";
 
 export const TOKEN_KEY = "apps_tok";
 
+export const API_KEY_IP = "e59f5adf485144e38e4ca5eb36dd151e";
+
 // for Get only
 export const doApiGet = async(_url) => {
   try{

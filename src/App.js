@@ -20,14 +20,17 @@ import CheckIp from "./comps_general/checkIp";
 import { AppContext } from "./context/context";
 import { useContext, useState } from "react";
 import FetchLocation from "./comps_general/checkIp";
+import ForbiddenCountryChecker from "./comps_general/checkIp";
+import { Provider } from "react-redux";
+import {createStore} from 'redux'
+import reducer from "./redux/reducer";
+import ReduxComp from "./comps_general/reduxComp";
 
 function App() {
-  const [flag, setFlag] = useState()
+  const store = createStore(reducer);
   return (
     <div>
-      <FetchLocation setFlag={flag}/>
-      {console.log("app flag: "+flag)}
-      {!flag ?
+      <Provider store={store}>
         <BrowserRouter>
           {/* Routes of header what to show client or admin header... */}
           <Routes>
@@ -35,20 +38,22 @@ function App() {
             <Route path="/admin/*" element={<AdminHeader />} />
             <Route path="/*" element={<HeaderClient />} />
           </Routes>
-          <Routes>
-            {/* client */}
-            {/* לא יכלנו לזמן כקומפנינטה מכיוון שראוטס
+          <ForbiddenCountryChecker>
+            <ReduxComp/>
+            <Routes>
+              {/* client */}
+              {/* לא יכלנו לזמן כקומפנינטה מכיוון שראוטס
         מצפה שבתוכו יגיע ישירות ריאקט פרגמט או ראוט
         אבל כן אפשר לעשות פונקציה שמחזיר קומפנינטות */}
-            {clientRoutes()}
-            {adminRoutes()}
+              {clientRoutes()}
+              {adminRoutes()}
 
-          </Routes>
+            </Routes>
+          </ForbiddenCountryChecker>
           {/* The toast messages added here */}
           <ToastContainer position="top-left" theme="colored" />
         </BrowserRouter>
-        : <div>Not allowed in this country</div>}
-        
+      </Provider>
     </div>
   );
 }
