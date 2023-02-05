@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
 import { API_URL, doApiGet } from '../services/apiService'
 import { useNavigate } from "react-router-dom"
+import { ToastContainer, toast } from "react-toastify";
 
-export default function AuthAdmin() {
+
+
+export default function AuthClient() {
   const nav = useNavigate();
 
   useEffect(() => {
@@ -13,15 +16,13 @@ export default function AuthAdmin() {
     let url = API_URL + "/users/checkToken"
     try {
       let data = await doApiGet(url);
-      if (data.role != "admin") {
-        // send to login and show message to login again
-        alert("You need to be admin to login to this area")
-        nav("/admin")
+      if(!data.role){
+        alert("There problem , come back later")
       }
     }
     catch(err){
-      alert("You need to login again to this area")
-      nav("/admin")
+      toast.error("You need login to be here, or your token expired , log in again")
+      nav("/login")
     }
   }
 

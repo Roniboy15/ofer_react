@@ -5,6 +5,7 @@ import AppListAdmin from "../admin_comps/appsListAdmin"
 import CategoriesList from "../admin_comps/categoriesList"
 import EditCategory from "../admin_comps/editCategory"
 import LoginAdmin from "../admin_comps/loginAdmin"
+import TestUpload from "../admin_comps/testUpload"
 import UsersList from "../admin_comps/usersList"
 import GameInfo from "../client_comps/gameInfo/gameInfo"
 import Home from "../client_comps/home"
@@ -42,6 +43,7 @@ export const adminRoutes = () => {
         <Route path="/admin/categories/edit/:id" element={<EditCategory />} />
         <Route path="/admin/apps" element={<AppListAdmin />} />
         <Route path="/admin/users" element={<UsersList />} />
+        <Route path="/admin/test" element={<TestUpload />} />
     </React.Fragment>
   )
 }

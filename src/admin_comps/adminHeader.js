@@ -14,6 +14,7 @@ export default function AdminHeader() {
               <li><Link to="/admin/categories">Categories</Link></li>
               <li><Link to="/admin/apps">Apps</Link></li>
               <li><Link to="/admin/users">Users</Link></li>
+              <li><Link to="/admin/test">Testing</Link></li>
             </ul>
           </div>
         </div>
