@@ -43,3 +43,10 @@ export const doApiMethod = async(_url,_method,_body = {}) => {
    throw err;
   }
 }
+
+export const fixImageUrl = (_imgUrl) => {
+  if(!_imgUrl.includes("://")){
+   return API_URL+_imgUrl;
+  }
+  return _imgUrl
+}
