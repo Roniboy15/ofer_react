@@ -9,12 +9,13 @@ import TestUpload from "../admin_comps/testUpload"
 import UsersList from "../admin_comps/usersList"
 import GameInfo from "../client_comps/gameInfo/gameInfo"
 import Home from "../client_comps/home"
+import FavsGameList from "../client_comps/pageGamesList/favsGamesList"
 import PageGamesList from "../client_comps/pageGamesList/pageGamesList"
-import AddGame from "../client_comps/userPages/addGames"
+import AddGame from "../client_comps/userPages/addGame"
 import EditGame from "../client_comps/userPages/editGames"
 import Login from "../client_comps/userPages/login"
 import Signup from "../client_comps/userPages/signup"
-import UserGamesAddedList from "../client_comps/userPages/userGameAddedList"
+import UserGamesAddedList from "../client_comps/userPages/userGamesAddedList"
 
 // פו
 export const clientRoutes = () => {
@@ -24,6 +25,7 @@ export const clientRoutes = () => {
        <Route path="/test" element={<h2>Test 4444</h2>} />
        <Route path="/category/:catName" element={<PageGamesList />} />
         <Route path="/info/:id" element={<GameInfo />} />
+        <Route path="/favs" element={<FavsGameList />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

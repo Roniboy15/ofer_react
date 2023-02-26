@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import { API_URL, doApiGet } from '../services/apiService'
 import { useNavigate } from "react-router-dom"
-import { ToastContainer, toast } from "react-toastify";
-
-
+import { toast } from 'react-toastify';
 
 export default function AuthClient() {
   const nav = useNavigate();
@@ -17,7 +15,7 @@ export default function AuthClient() {
     try {
       let data = await doApiGet(url);
       if(!data.role){
-        alert("There problem , come back later")
+        alert("There problem , com back later")
       }
     }
     catch(err){

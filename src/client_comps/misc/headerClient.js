@@ -24,8 +24,8 @@ export default function HeaderClient() {
           <div className='col row align-items-center justify-content-between'>
             <ul className='col-auto'>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/userGameList">Your Games</Link></li>
-
+              <li><Link to="/userGameList">My Apps</Link></li>
+              <li><Link to="/favs">My Favs</Link></li>
               {/* <li><Link to="/">Apps</Link></li>
               <li><Link to="/">Users</Link></li> */}
             </ul>

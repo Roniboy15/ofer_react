@@ -22,7 +22,7 @@ export default function CategoriesClientList() {
     <div className='row g-4 py-5'>
       {ar.map((item, i) => {
         return (
-          <article onClick={ () => {
+          <article onClick={() => {
             nav("/category/"+item.url_code);
           }} key={item._id} className='col-md-4 '>
             <div className='bg-category shadow center' style={{ backgroundImage: `url(${item.img_url})` }}>

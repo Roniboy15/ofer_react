@@ -52,7 +52,6 @@ export default function AppListAdmin() {
       console.log(err)
       alert("There problem , come back late")
     }
-    
   }
 
   return (

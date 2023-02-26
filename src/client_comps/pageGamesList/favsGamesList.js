@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import Loading from '../../comps_general/loading';
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
+import { getLocal } from '../../services/localService';
 import GameAppItem from '../misc/gameAppItem';
 
-export default function PageGamesList() {
+export default function FavsGameList() {
   // יכיל את הרשימה של האפליקציות/משחקים של אותה קטגוריה
   const [ar, setAr] = useState([]);
+  const [favsLocal_ar,setFavsLocalAr] = useState(getLocal());
   // יכיל את המידע על הקטגוריה
   const [catInfo, setCatInfo] = useState({});
   const params = useParams();
@@ -19,16 +21,11 @@ export default function PageGamesList() {
 
   const doApi = async () => {
     setLoading(true);
-    // מביא מידע נוסף על הקטגוריה
-    let catName = params["catName"];
-    let urlCat = `${API_URL}/categories/byCode/${catName}`;
-    let dataCat = await doApiGet(urlCat);
-    console.log(dataCat);
-    setCatInfo(dataCat)
-
+   
 // מביא את רשימת המשחקים של אותה קטגוריה
-    let url = `${API_URL}/gamesApps/?cat=${catName}`;
-    let data = await doApiGet(url);
+    console.log(favsLocal_ar);
+    let url = `${API_URL}/gamesApps/groupsApp`;
+    let data = await doApiMethod(url,"POST",{ids:favsLocal_ar});
     console.log(data);
     setAr(data);
     setLoading(false);
@@ -38,7 +35,7 @@ export default function PageGamesList() {
     <div className='container py-4 text-center'>
       {loading ? <Loading /> :
       <React.Fragment>
-        <h1 className='display-4'>Apps/games of {catInfo.name} list:</h1>
+        <h1 className='display-4'>Your favorties App/Games</h1>
         <p className='lead'>{catInfo.info}</p>
         <div className="row justify-content-center">
 

@@ -9,24 +9,30 @@ export default function TestUpload() {
   const onSub = (e) => {
     e.preventDefault();
     uploadFile();
+    
   }
-
+  
   const uploadFile = async() => {
     console.log(fileRef.current.files)
     try{
-        if(fileRef.current.files){
-            let url = API_URL + "/upload/gamesApp";
-            let formData = new FormData()
-            formData.append("myFile", fileRef.current.files[0])
-            let resp = await axios.post(url, formData);
-            console.log(resp.data)
-        }
+
+      if(fileRef.current.files){
+        let url = API_URL+"/upload/gamesApp";
+        let formData = new FormData()
+        // אינפוט של קבצים , אין להם וויליו
+        // אך יש להם פיילס שהוא מערך/רשימה
+        // של קבצים שהמשתמש בחר
+        // אם נתעסק עם קובץ אחד בעצם נעלה את תא 0
+        formData.append("myFile",fileRef.current.files[0])
+        let resp = await axios.post(url, formData);
+        console.log(resp.data)
+      }
     }
     catch(err){
-        console.log(err);
-        alert("A problem occured")
+      console.log(err);
+      alert("There problem")
     }
-   
+    
   }
 
   return (

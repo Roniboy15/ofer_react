@@ -3,17 +3,19 @@ import { Link } from 'react-router-dom';
 import { doApiGet } from '../services/apiService';
 
 export default function PagesComp(props) {
-  // TODO: להבין כמה עמודים יש לי בפרוייקט
+  // props needed: apiPages, linkTo, linkCss
+
   const [pages,setPages] = useState();
 
   useEffect(() => {
     doApi();
     
   
-  },[])
+  },[props.apiPages])
 
   const doApi = async() => {
     // let url = `http://localhost:3002/gamesApps/count?perPage=5`
+    console.log(props.apiPages)
     let resp = await doApiGet(props.apiPages);
     console.log(resp);
     setPages(resp.pages);

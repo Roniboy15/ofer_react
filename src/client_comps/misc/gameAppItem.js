@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { fixImageUrl } from '../../services/apiService';
+import {fixImageUrl} from "../../services/apiService"
 
 export default function GameAppItem(props) {
   let item = props.item;
