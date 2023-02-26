@@ -36,6 +36,7 @@ export const doApiMethod = async(_url,_method,_body = {}) => {
         "x-api-key": localStorage[TOKEN_KEY]
       }
     })
+    console.log(_body)
     return resp.data;
   }
   catch(err){

@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import AuthClient from '../../comps_general/authClient';
 import { API_URL, doApiGet, doApiMethod } from '../../services/apiService';
 
 export default function AddGame() {
@@ -19,6 +20,16 @@ export default function AddGame() {
     console.log(_bodyData);
     doApiPost(_bodyData)
   }
+
+   
+
+  const doApiGetCategories = async() => {
+    let url = API_URL+"/categories";
+    let data = await doApiGet(url);
+    console.log(data);
+    setCategoriesAr(data); 
+  }
+
 
   const doApiPost = async(_bodyData) => {
     try{
@@ -36,21 +47,14 @@ export default function AddGame() {
     }
   }
 
- 
-
-  const doApiGetCategories = async() => {
-    let url = API_URL+"/categories";
-    let data = await doApiGet(url);
-    console.log(data);
-    setCategoriesAr(data); 
-  }
 
 
 
   return (
     <div className='container mt-3'>
+    <AuthClient/>
       <h1>Add new App/Games form</h1>
-      <Link to="/userGameList" className='btn btn-danger' >Cancel</Link>
+      
 
       <form className='col-md-6' onSubmit={handleSubmit(onSubForm)} id="id_form" >
         <label>name</label>
@@ -80,6 +84,7 @@ export default function AddGame() {
         </select>
 
         <button className='btn btn-success mt-3'>Add new</button>
+        <Link to="/userGameList" className='btn btn-danger mt-3 ms-5' >Cancel</Link>
       </form>
     </div >
   )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loading from '../../comps_general/loading';
-import { API_URL, doApiGet } from '../../services/apiService';
+import { API_URL, doApiGet, fixImageUrl } from '../../services/apiService';
 import {BsArrowLeftCircle , BsStarFill} from "react-icons/bs"
 import SimGames from './simGames';
 
@@ -31,7 +31,7 @@ export default function GameInfo() {
         <React.Fragment>
           <div className="row">
             <div className="col-md-4">
-              <img src={info.img_url} className="img-fluid" alt="app image" />
+              <img src={fixImageUrl(info.img_url)} className="img-fluid" alt="app image" />
             </div>
             <article className='col-md-8'>
               <h1 className='display-4'>
