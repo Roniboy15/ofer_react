@@ -25,7 +25,8 @@ export default function FavsGameList() {
 // מביא את רשימת המשחקים של אותה קטגוריה
     console.log(favsLocal_ar);
     let url = `${API_URL}/gamesApps/groupsApp`;
-    let data = await doApiMethod(url,"POST",{ids:favsLocal_ar});
+    let data = await doApiMethod(url,"POST",{ids:favsLoc
+      al_ar});
     console.log(data);
     setAr(data);
     setLoading(false);
