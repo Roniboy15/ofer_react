@@ -11,17 +11,18 @@ const counterSlice = createSlice({
   initialState: initValue,
   reducers:{
     add1:(state,action) => {
-        state.counter++;
+      state.counter++;
     },
     addCustom:(state,action) => {
-        state.counter += action.payload.number
+      state.counter += action.payload.number
     },
     reset0:(state,action) => {
-        state.counter = 0;
+      state.counter = 0;
     }
     // כל האקשנים / פונקציות שמשפיעות על הסטור
   }
 })
 
-export const {add1,addCustom, reset0} = counterSlice.actions;
+export const {add1,addCustom,reset0} = counterSlice.actions;
 export default counterSlice.reducer
+

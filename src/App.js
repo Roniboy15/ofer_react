@@ -1,20 +1,24 @@
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+
+import './App.css';
 import AppRoutes from './appRoutes';
 import counterSlice from './features/counterSlice';
-import { configureStore } from '@reduxjs/toolkit'
-import { Provider } from 'react-redux'
+import shopSlice from './features/shopSlice';
 
 const myStore = configureStore({
-  reducer: {
-    counterSlice
+  reducer:{
+    counterSlice,
+    shopSlice
   }
 })
 
-const App = () => {
+function App() {
   return (
     <Provider store={myStore}>
-      <AppRoutes/>
+      <AppRoutes />
     </Provider>
-  )
+  );
 }
 
-export default App
+export default App;
