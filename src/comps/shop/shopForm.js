@@ -9,6 +9,7 @@ export default function ShopForm() {
   const amountRef = useRef();
 
   const onResetClick = () => {
+    // מאפס את המערך מהריוסדר בסטור הגלובלי
     dispatch(resetProducts());
   }
 
@@ -20,6 +21,7 @@ export default function ShopForm() {
       id:Date.now()
     }
     console.log(newItem);
+    // מוסיף לרדיוסר בסטור הגלובלי פריט חדש
     dispatch(addProduct({item:newItem}))
   } 
 
